@@ -55,10 +55,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "sera_app:build:production"
+              "buildTarget": "sera_app:build:production"
             },
             "development": {
-              "browserTarget": "sera_app:build:development"
+              "buildTarget": "sera_app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -66,7 +66,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sera_app:build"
+            "buildTarget": "sera_app:build"
           }
         },
         "test": {

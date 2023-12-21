@@ -18,9 +18,8 @@ export class AddWorkComponent {
     Validators.required,
     Validators.email,
   ]);
-  foods: any[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' },
+  types: any[] = [
+    { value: 'type-1', viewValue: 'First Type' },
+    { value: 'type-2', viewValue: 'Second Type' },
   ];
 }
