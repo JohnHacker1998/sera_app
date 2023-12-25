@@ -1,0 +1,69 @@
+<div
+  class="modal fade"
+  id="updateWorkModal"
+  tabindex="-1"
+  aria-labelledby="updateWorkModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="updateWorkModalLabel">Update Work</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="example-form flex flex-col">
+          <mat-form-field class="example-full-width">
+            <mat-label>ID</mat-label>
+            <input
+              type="text"
+              matInput
+              required="true"
+              placeholder="Ex. pat@example.com"
+              ,
+              disabled="true"
+            />
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <input
+              type="text"
+              matInput
+              required="true"
+              placeholder="Ex. pat@example.com"
+            />
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Salary</mat-label>
+            <input type="number" matInput placeholder="1000.00" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Work Type</mat-label>
+            <mat-select>
+              @for (type of types; track type) {
+              <mat-option [value]="type.value">{{ type.viewValue }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="bg-red-800 p-3 text-white"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button type="button" class="bg-green-800 p-3 text-white">
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

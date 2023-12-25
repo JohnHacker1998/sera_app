@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\sera_app.props" />
+</Project>

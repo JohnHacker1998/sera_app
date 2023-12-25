@@ -1,36 +1,60 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { Work } from 'src/interfaces/Work';
-import MatIconMod
+import { WorkService } from './Services/WorkService';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(private workService: WorkService) {
+    setTimeout(() => {
+      $('#datatable1').DataTable({
+        pagingType: 'full_numbers',
+        pageLength: 5,
+        processing: true,
+        lengthMenu: [5, 10, 25],
+      });
+    }, 1);
+  }
   title = 'sera_app';
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  ELEMENT_DATA: Work[] = [
-    { id: '15', description: 'Phosphorus', salary: 30.9738, type: 'Home' },
-    { id: '15', description: 'Phosphorus', salary: 30.9738, type: 'Home' },
-    { id: '15', description: 'Phosphorus', salary: 30.9738, type: 'Home' },
-    { id: '15', description: 'Phosphorus', salary: 30.9738, type: 'Home' },
-    { id: '15', description: 'Phosphorus', salary: 30.9738, type: 'Home' },
-    { id: '15', description: 'Phosphorus', salary: 30.9738, type: 'Home' },
-  ];
-  dataSource = new MatTableDataSource<Work>(this.ELEMENT_DATA);
-  displayedColumns: string[] = [
-    'id',
-    'description',
-    'salary',
-    'type',
-    'update',
-    'delete',
-  ];
+  // dtOptions: DataTables.Settings = {};
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
+  ELEMENT_DATA: Work[] = [];
+  // dataSource = new MatTableDataSource<Work>(this.ELEMENT_DATA);
+  // displayedColumns: string[] = [
+  //   'id',
+  //   'description',
+  //   'salary',
+  //   'type',
+  //   // ,ng
+  //   // 'update',
+  //   // 'delete',
+  // ];
   updateItem(element: Work) {}
   deleteItem(element: Work) {}
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  fillTable() {
+    this.workService.getAll().subscribe((result: Work[]) => {
+      this.ELEMENT_DATA.push(...result);
+    });
+  }
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  //   this.fillTable();
+  // }
+
+  async ngOnInit() {
+    await this.workService.getAll().subscribe((result: Work[]) => {
+      this.ELEMENT_DATA = result;
+      console.log('before', this.ELEMENT_DATA);
+    });
+    // this.dtOptions = {
+    //   pagingType: 'full_numbers',
+    //   // Add more DataTables options as needed
+    // };
   }
 }
