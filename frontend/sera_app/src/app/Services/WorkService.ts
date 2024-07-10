@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Work } from 'src/interfaces/Work';
 
@@ -9,5 +9,8 @@ export class WorkService {
   constructor(private httpClient: HttpClient) {}
   getAll(): Observable<Work[]> {
     return this.httpClient.get<Work[]>(this.apiUrl);
+  }
+  getById(id: string): Observable<Work> {
+    return this.httpClient.get<Work>(`${this.apiUrl}/${id}`);
   }
 }

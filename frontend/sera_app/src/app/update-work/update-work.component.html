@@ -17,7 +17,7 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form class="example-form flex flex-col">
+        <form class="example-form flex flex-col" (ngSubmit)="updateWork()">
           <mat-form-field class="example-full-width">
             <mat-label>ID</mat-label>
             <input
@@ -25,8 +25,9 @@
               matInput
               required="true"
               placeholder="Ex. pat@example.com"
-              ,
-              disabled="true"
+              [(ngModel)]="id"
+              name="txtId"
+              id="txtId"
             />
           </mat-form-field>
           <mat-form-field class="example-full-width">
@@ -36,11 +37,21 @@
               matInput
               required="true"
               placeholder="Ex. pat@example.com"
+              name="txtDescription"
+              id="txtDescription"
+              [(ngModel)]="description"
             />
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Salary</mat-label>
-            <input type="number" matInput placeholder="1000.00" />
+            <input
+              type="number"
+              matInput
+              placeholder="1000.00"
+              [(ngModel)]="salary"
+              name="txtSalary"
+              id="txtSalary"
+            />
           </mat-form-field>
           <mat-form-field>
             <mat-label>Work Type</mat-label>
@@ -50,6 +61,9 @@
               }
             </mat-select>
           </mat-form-field>
+          <button type="submit" class="bg-green-800 p-3 text-white">
+            Update
+          </button>
         </form>
       </div>
       <div class="modal-footer">
@@ -59,9 +73,6 @@
           data-bs-dismiss="modal"
         >
           Close
-        </button>
-        <button type="button" class="bg-green-800 p-3 text-white">
-          Update
         </button>
       </div>
     </div>

@@ -1,13 +1,5 @@
-import { Component } from '@angular/core';
-import {
-  FormControl,
-  Validators,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
+import { Component, Input } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-update-work',
@@ -15,6 +7,11 @@ import { MatSelectModule } from '@angular/material/select';
   styleUrl: './update-work.component.css',
 })
 export class UpdateWorkComponent {
+  @Input() id?: string;
+  @Input() description?: string;
+  @Input() salary?: number;
+  @Input() workType?: string;
+
   types: any[] = [
     { value: 'type-1', viewValue: 'First Type' },
     { value: 'type-2', viewValue: 'Second Type' },
@@ -23,4 +20,5 @@ export class UpdateWorkComponent {
     Validators.required,
     Validators.email,
   ]);
+  updateWork() {}
 }
